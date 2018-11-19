@@ -1,3 +1,6 @@
+// Execution command for spark-shell in Scala
+// set 50g memory
+//     2g maxResultSize for heavy data set
 // spark-shell --driver-memory 50g --conf spark.driver.maxResultSize=2g
 
 import org.apache.spark.sql.SQLContext
@@ -10,13 +13,9 @@ import spark.implicits._
 
 // white-list of citations
 var citations = spark.read.format("csv").option("header", "true").option("delimiter", "\t").option("mode", "DROPMALFORMED").load("/home/lanu/GS/data/citations_whitelist/*.csv")
-
 var papers = spark.read.format("csv").option("header", "true").option("delimiter", "\t").option("mode", "DROPMALFORMED").load("/home/lanu/GS/data/papers_journal_eng_article_1988_unique/*.csv")
-
 var subjects_traditional = spark.read.format("csv").option("header", "true").option("delimiter", "\t").option("mode", "DROPMALFORMED").load("/home/lanu/GS/data/subjects_traditional.txt")
-
 var wos_categorization = spark.read.format("csv").option("header", "true").option("mode", "DROPMALFORMED").load("/home/lanu/GS/wos_categorization.csv")
-
 var selfcited = spark.read.format("csv").option("header", "true").option("delimiter", "\t").option("mode", "DROPMALFORMED").load("/home/lanu/GS/data/selfcited_firstauthor/*.csv")
 
 citations.createGlobalTempView("citations")
