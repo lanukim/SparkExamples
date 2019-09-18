@@ -24,7 +24,7 @@ subjects_traditional.createGlobalTempView("subjects_traditional")
 selfcited.createGlobalTempView("selfcited")
 
 var subjects = Map(
- //("Sociology", "Sociology"),
+ ("Sociology", "Sociology"),
  ("Cardiac & Cardiovascular Systems", "CardiacAndCardiovascularSystems"),
  ("Political Science", "PoliticalScience"),
  ("Statistics & Probability", "StatisticsAndProbability"),
