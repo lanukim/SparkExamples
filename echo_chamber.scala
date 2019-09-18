@@ -24,12 +24,12 @@ subjects_traditional.createGlobalTempView("subjects_traditional")
 selfcited.createGlobalTempView("selfcited")
 
 var subjects = Map(
- //("Sociology", "Sociology"),
- ("Cardiac & Cardiovascular Systems", "CardiacAndCardiovascularSystems"),
- ("Political Science", "PoliticalScience"),
- ("Statistics & Probability", "StatisticsAndProbability"),
- ("Mathematics", "Mathematics"),
- ("Microbiology", "Microbiology")
+ ("Communication", "Communication"),
+ ("Economics", "Economics"),
+ ("Public, Environmental & Occupational Health", "PublicHealth"),
+ ("Education & Educational Research", "Education"),
+ ("Law", "Law"),
+ ("Business", "Business")
 );
 
 for((subject, subjectDirectory) <- subjects) {
