@@ -24,11 +24,11 @@ subjects_traditional.createGlobalTempView("subjects_traditional")
 selfcited.createGlobalTempView("selfcited")
 
 var subjects = Map(
- ("Communication", "Communication"),
+ //("Communication", "Communication"),
  ("Economics", "Economics"),
- ("Public, Environmental & Occupational Health", "PublicHealth"),
+ //("Public, Environmental & Occupational Health", "PublicHealth"),
  ("Education & Educational Research", "Education"),
- ("Law", "Law"),
+ //("Law", "Law"),
  ("Business", "Business")
 );
 
