@@ -25,9 +25,9 @@ selfcited.createGlobalTempView("selfcited")
 
 var subjects = Map(
  //("Communication", "Communication"),
- ("Economics", "Economics"),
+ //("Economics", "Economics"),
  //("Public, Environmental & Occupational Health", "PublicHealth"),
- ("Education & Educational Research", "Education"),
+ //("Education & Educational Research", "Education"),
  //("Law", "Law"),
  ("Business", "Business")
 );
