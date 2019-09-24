@@ -14,11 +14,9 @@ import spark.implicits._
 // white-list of citations
 var papers = spark.read.format("csv").option("header", "true").option("delimiter", "\t").option("mode", "DROPMALFORMED").load("/home/lanu/GS/data/papers_journal_eng_article_1988_unique/*.csv")
 var subjects_traditional = spark.read.format("csv").option("header", "true").option("delimiter", "\t").option("mode", "DROPMALFORMED").load("/home/lanu/GS/data/subjects_traditional.txt")
-var wos_categorization = spark.read.format("csv").option("header", "true").option("mode", "DROPMALFORMED").load("/home/lanu/GS/wos_categorization.csv")
 
 papers.createGlobalTempView("papers")
 subjects_traditional.createGlobalTempView("subjects_traditional")
-selfcited.createGlobalTempView("selfcited")
 
 var subjects = Map(
  ("Biology", "Biology"),
@@ -41,7 +39,7 @@ var subjects = Map(
  ("Oncology", "Oncology"),
  ("Physics, Mathematical", "PhysicsMathematical"),
  ("Physics, Multidisciplinary", "PhysicsMultidisciplinary"),
- ("Psychology, Applied     ", "PsychologyApplied     "),
+ ("Psychology, Applied", "PsychologyApplied"),
  ("Psychology, Clinical", "PsychologyClinical"),
  ("Psychology, Developmental", "PsychologyDevelopmental"),
  ("Psychology, Educational", "PsychologyEducational"),
@@ -64,7 +62,7 @@ for((subject, subjectDirectory) <- subjects) {
             SELECT subjects.UID
             FROM global_temp.subjects_traditional AS subjects
             WHERE papers.UID = subjects.UID
-                AND subjects.no == 1
+                AND subjects.no = 1
                 AND subjects.name = '""" + subject + """'
             )
     """)
@@ -72,8 +70,5 @@ for((subject, subjectDirectory) <- subjects) {
     papersInSubject.coalesce(1).write.format("csv").option("header","true").option("delimiter", "\t").save("/home/lanu/GS/data/echo_chamber/" + subjectDirectorySuffix + "/papersInSubject")
 
     papersInSubject = spark.read.format("csv").option("header", "true").option("delimiter", "\t").option("mode", "DROPMALFORMED").load("/home/lanu/GS/data/echo_chamber/" + subjectDirectorySuffix + "/papersInSubject")
-    spark.catalog.dropGlobalTempView("papersInSubject")
-    papersInSubject.createGlobalTempView("papersInSubject")
-
     }
 
