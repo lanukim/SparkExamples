@@ -55,7 +55,7 @@ for((subject, subjectDirectory) <- subjects) {
     SELECT
         papers.UID,
         papers.title_source,
-        papers.pub_date,
+        papers.pub_date
     FROM global_temp.papers AS papers
     WHERE
         EXISTS (
